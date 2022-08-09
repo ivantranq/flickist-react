@@ -1,0 +1,57 @@
+.home {
+  height: calc(100vh - 90px);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__img--wrapper {
+  padding-top: 72px;
+  height: 40vh;
+}
+
+.home__img {
+  height: 100%;
+}
+
+.home p,
+.home h1,
+input,
+form {
+  padding: 12px 24px;
+}
+
+.home h1 {
+  font-size: 48px;
+}
+
+.home p {
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  border-radius: 8px;
+  border: none;
+  font-size: 24px;
+}
+
+.movie-form__btn {
+  margin-left: 8px !important;
+  height: 52px !important;
+  border-radius: 8px !important;
+  background-color: black !important;
+  font-size: 24px !important;
+  text-transform: capitalize !important;
+}
+
+.MuiSvgIcon-root {
+  font-size: 32px !important;
+}
