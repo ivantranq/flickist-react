@@ -1,0 +1,28 @@
+.result-item {
+  width: 30%;
+  margin: 12px;
+  cursor: pointer;
+}
+
+.result-item:hover,
+.result__img:hover {
+  scale: 1.05;
+}
+
+.result-item,
+.result__img {
+  transition: scale 100ms ease;
+}
+
+.result__img--wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  /* max-height: 27rem; */
+}
+
+.result__img {
+  width: 100%;
+  border-radius: 8px;
+  height: 100%;
+}

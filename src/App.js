@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Search from "./pages/Search"
+import Search from "./pages/Search";
 import Navbar from "./components/Navbar";
-import './App.css'
+import MovieInfo from "./pages/MovieInfo";
+import "./App.css";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route index element={<Home />} />
-          <Route path='/search' element={<Search />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/:id" element={<MovieInfo />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,63 @@
+.movie-info {
+  padding: 16px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  height: calc(100vh - 90px);
+}
+
+.movie-info__header {
+  display: flex;
+  align-items: center;
+}
+
+.movie-info__header .MuiSvgIcon-root {
+  margin-right: 8px;
+}
+
+.movie-info__body {
+  display: flex;
+  margin-top: 32px;
+}
+.movie-info__title,
+.movie-info__director {
+  text-align: left;
+}
+
+.movie-info__description {
+  margin-left: 32px;
+}
+
+.movie-info__description h4 {
+  margin: 8px 0;
+}
+
+.movie-info__stats--descriptors {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.movie-info__stats--descriptors h5 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 8px;
+  border-right: 1px solid gray;
+}
+.movie-info__stats--ratings {
+  display: flex;
+}
+
+.movie-info__stats--ratings h5 {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 8px;
+}
+
+.movie-info__description--text {
+  margin-top: 8px;
+  text-align: left;
+}

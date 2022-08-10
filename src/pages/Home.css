@@ -32,16 +32,7 @@ form {
   font-size: 24px;
 }
 
-form {
-  display: flex;
-  align-items: center;
-}
 
-input {
-  border-radius: 8px;
-  border: none;
-  font-size: 24px;
-}
 
 .movie-form__btn {
   margin-left: 8px !important;
