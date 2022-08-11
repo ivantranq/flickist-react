@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <div className="navbar">
-      <div className="navbar__logo">
+      <div className="navbar__logo" onClick={() => navigate("/")}>
         <figure className="logo__wrapper">
           <img src={logo} alt="" className="logo__img" />
         </figure>

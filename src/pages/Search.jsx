@@ -7,24 +7,34 @@ import ResultItem from "../components/resultItem";
 import SearchBar from "../components/searchBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Results from "../components/Results";
+import Void from "../assets/Void.svg";
 
 const Search = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
   const { input } = useParams();
   console.log("Search.jsx input -> ", input);
 
   async function fetchSearchResults() {
+    setIsLoading(true);
     const { data } = await axios.get(
       `https://www.omdbapi.com/?s=${input}&apikey=cbedd0e4`
     );
     console.log(data);
+    if (data.Response === "False") {
+      setSearchResults([]);
+      return;
+    }
     setSearchResults(data.Search.slice(0, 6));
-    return data;
+    setIsLoading(false);
   }
 
   useEffect(() => {
     fetchSearchResults();
   }, [input]);
+
+  console.log(isLoading);
 
   function filterMovies(filterType) {
     console.log(filterType);
@@ -47,7 +57,6 @@ const Search = () => {
     <div className="search">
       <SearchBar />
       <hr />
-      {/* Movie result */}
       <div className="search__header">
         <h2 className="results__title">Search results for "{input}"</h2>
         <select
@@ -65,19 +74,23 @@ const Search = () => {
           <option value="YEAR_LOW_TO_HIGH">Earliest Release</option>
         </select>
       </div>
-      <div className="results">
-        {input !== "-" &&
-          searchResults.map(({ Title, Poster, Type, Year, imdbID }) => (
-            <ResultItem
-              key={imdbID}
-              Title={Title}
-              Poster={Poster}
-              Type={Type}
-              Year={Year}
-              imdbID={imdbID}
-            />
-          ))}
-      </div>
+      {searchResults.length > 0 ? (
+        <Results
+          isLoading={isLoading}
+          searchResults={searchResults}
+          input={input}
+        />
+      ) : (
+        <div className="no-results">
+          <figure className="no-results__img--wrapper">
+            <img src={Void} alt="" className="no-results__img" />
+          </figure>
+            <h1 className="no-results__title">
+              Sorry, there were no results found for "{input}"
+            </h1>
+        </div>
+      )}
+      {/* Movie result */}
     </div>
   );
 };

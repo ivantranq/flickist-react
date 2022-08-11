@@ -17,7 +17,7 @@ const MovieInfo = () => {
   async function fetchMovieInfo() {
     setIsLoading(true);
     const { data } =
-      await axios.get(`http://www.omdbapi.com/?i=${id}&apikey=cbedd0e4
+      await axios.get(`http://www.omdbapi.com/?i=${id}&apikey=cbedd0e4&plot=full
     `);
     setMovieInfo(data);
     setIsLoading(false);
