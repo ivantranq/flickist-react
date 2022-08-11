@@ -13,6 +13,7 @@
 
 .movie-info__header .MuiSvgIcon-root {
   margin-right: 8px;
+  cursor: pointer;
 }
 
 .movie-info__body {
@@ -60,4 +61,56 @@
 .movie-info__description--text {
   margin-top: 8px;
   text-align: left;
+}
+
+/* 
+
+SKELETON
+
+*/
+
+.movie-info__body--skeleton {
+  display: flex;
+  margin: 16px auto;
+  width: 900px;
+}
+
+.movie-info__img--skeleton,
+.movie__title--skeleton,
+.movie__directed--skeleton,
+.movie__stats--skelton,
+.movie__text--skeleton,
+.movie__stats--skeleton {
+  background-color: lightgray;
+  border: 1px solid lightgray;
+  color: lightgray;
+  margin: 8px;
+}
+
+.movie-info__img--skeleton {
+  width: 300px;
+  height: 450px;
+}
+
+.movie-info__description--skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie__title--skeleton {
+  width: 60%;
+}
+
+.movie__directed--skeleton {
+  width: 40%;
+}
+
+.movie__stats--skeleton {
+  height: 60px;
+}
+
+.movie__text--skeleton {
+  margin-top: 20px;
+  height: 250px;
 }

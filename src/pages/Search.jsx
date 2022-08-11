@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./Search.css";
-import { Button } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+// import { Button } from "@mui/material";
+// import SearchIcon from "@mui/icons-material/Search";
 import ResultItem from "../components/resultItem";
-import Response from "../response1";
-import { Link } from "react-router-dom";
+// import Response from "../response1";
+import SearchBar from "../components/searchBar";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
+  const { input } = useParams();
+  console.log("Search.jsx input -> ", input);
+
+  async function fetchSearchResults() {
+    const { data } = await axios.get(
+      `https://www.omdbapi.com/?s=${input}&apikey=cbedd0e4`
+    );
+    console.log(data);
+    setSearchResults(data.Search.slice(0, 6));
+    return data;
+  }
 
   useEffect(() => {
-    setSearchResults(Response.Search.slice(0, 6));
-  }, []);
+    fetchSearchResults();
+  }, [input]);
 
   function filterMovies(filterType) {
     console.log(filterType);
@@ -30,20 +43,13 @@ const Search = () => {
     }
   }
 
-  console.log(searchResults);
-
   return (
     <div className="search">
-      <form className="search__movie-form">
-        <input type="text" placeholder="Search by Title" />
-        <Button type="submit" variant="contained" className="movie-form__btn">
-          <SearchIcon />
-        </Button>
-      </form>
+      <SearchBar />
       <hr />
       {/* Movie result */}
       <div className="search__header">
-        <h2 className="results__title">Search results for "Search"</h2>
+        <h2 className="results__title">Search results for "{input}"</h2>
         <select
           id="filter"
           className="results__filter"
@@ -60,16 +66,17 @@ const Search = () => {
         </select>
       </div>
       <div className="results">
-        {searchResults.map(({ Title, Poster, Type, Year, imdbID }) => (
-          <ResultItem
-            key={imdbID}
-            Title={Title}
-            Poster={Poster}
-            Type={Type}
-            Year={Year}
-            imdbID={imdbID}
-          />
-        ))}
+        {input !== "-" &&
+          searchResults.map(({ Title, Poster, Type, Year, imdbID }) => (
+            <ResultItem
+              key={imdbID}
+              Title={Title}
+              Poster={Poster}
+              Type={Type}
+              Year={Year}
+              imdbID={imdbID}
+            />
+          ))}
       </div>
     </div>
   );

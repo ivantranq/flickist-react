@@ -13,7 +13,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/search" element={<Search />} />
+          <Route path={`/search/:input`} element={<Search />} />
           <Route path="/:id" element={<MovieInfo />} />
         </Routes>
       </div>

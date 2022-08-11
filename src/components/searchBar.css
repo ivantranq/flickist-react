@@ -1,0 +1,11 @@
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.serach-form__input {
+  border-radius: 8px;
+  border: none;
+  font-size: 24px;
+}

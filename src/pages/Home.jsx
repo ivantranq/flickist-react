@@ -1,8 +1,9 @@
 import React from "react";
 import "./Home.css";
 import LostOnline from "../assets/LostOnline.svg";
-import { Button } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import SearchBar from "../components/searchBar";
+// import { Button } from "@mui/material";
+// import SearchIcon from "@mui/icons-material/Search";
 
 const Home = () => {
   return (
@@ -15,12 +16,7 @@ const Home = () => {
         Find information about your favourite movie using Australia's fastest
         open movie database.
       </p>
-      <form className="home__movie-form">
-        <input type="text" placeholder="Search movies..." />
-        <Button type="submit" variant="contained" className="movie-form__btn">
-          <SearchIcon />
-        </Button>
-      </form>
+      <SearchBar />
     </div>
   );
 };
