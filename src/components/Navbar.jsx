@@ -18,7 +18,7 @@ const Navbar = () => {
         <Button
           className="navbar__link navbar__link"
           startIcon={<SearchIcon />}
-          onClick={() => navigate("/search/-")}
+          onClick={() => navigate("/search/ ")}
         >
           Search
         </Button>

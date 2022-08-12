@@ -59,12 +59,15 @@ const MovieInfo = () => {
                 <h5>Rated - {movieInfo.Rated}</h5>
               </div>
               <div className="movie-info__stats--ratings">
-                {/* {movieInfo.Ratings.map((rating) => (
-                <h5>{`${rating.Source} - ${rating.Value}`}</h5>
-              ))} */}
+                {movieInfo.Ratings.map((rating) => (
+                  <h5>{`${rating.Source} - ${rating.Value}`}</h5>
+                ))}
               </div>
             </div>
-            <div className="movie-info__tabs"></div>
+            <div className="movie-info__tabs">
+              <button className="overview-tab">Overview</button>
+              <button className="reviews-tab">Reviews</button>
+            </div>
             <div className="movie-info__description--text">
               <p>{movieInfo.Plot}</p>
               <br />

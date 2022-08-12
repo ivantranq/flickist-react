@@ -7,6 +7,7 @@ import { actionTypes } from "../reducer";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
+  // eslint-disable-next-line no-empty-pattern
   const [{}, dispatch] = useStateValue();
   const [input, setInput] = useState("");
 
@@ -30,6 +31,7 @@ const SearchBar = () => {
         type="text"
         placeholder="Search movies..."
         onChange={(event) => setInput(event.target.value)}
+        required
       />
       <Button type="submit" variant="contained" className="movie-form__btn">
         <SearchIcon />
