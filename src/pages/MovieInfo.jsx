@@ -32,6 +32,16 @@ const MovieInfo = () => {
 
   console.log(isLoading);
 
+  function handleClick(tabName) {
+    console.log(tabName);
+    const tabs = document.getElementsByClassName("movie-info__description");
+    console.log(tabs);
+    for (let i = 0; i < tabs.length; i++) {
+      tabs[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+  }
+
   return (
     <div className="movie-info">
       <div className="movie-info__header">
@@ -47,7 +57,7 @@ const MovieInfo = () => {
               className="poster__img"
             />
           </figure>
-          <div className="movie-info__description">
+          <div className="movie-info__description--container">
             <h2 className="movie-info__title">{`${movieInfo.Title} (${movieInfo.Year})`}</h2>
             <h4 className="movie-info__director">{`Directed by ${movieInfo.Director}`}</h4>
             <div className="movie-info__stats">
@@ -65,15 +75,35 @@ const MovieInfo = () => {
               </div>
             </div>
             <div className="movie-info__tabs">
-              <button className="overview-tab">Overview</button>
-              <button className="reviews-tab">Reviews</button>
+              <button
+                className="movie-info__tab"
+                onClick={() => handleClick("overview")}
+                autoFocus
+              >
+                Overview
+              </button>
+              <button
+                className="movie-info__tab"
+                onClick={() => handleClick("reviews")}
+              >
+                Reviews
+              </button>
             </div>
-            <div className="movie-info__description--text">
+            <div
+              className="movie-info__description movie-info__description--overview"
+              id="overview"
+            >
               <p>{movieInfo.Plot}</p>
               <br />
               <p>Featuring - {movieInfo.Actors}</p>
               <br />
               <p>Awards - {movieInfo.Awards} </p>
+            </div>
+            <div
+              className="movie-info__description movie-info__description--reviews"
+              id="reviews"
+            >
+              <h2>Reviews Here</h2>
             </div>
           </div>
         </div>

@@ -25,11 +25,11 @@
   text-align: left;
 }
 
-.movie-info__description {
+.movie-info__description--container {
   margin-left: 32px;
 }
 
-.movie-info__description h4 {
+.movie-info__description--container h4 {
   margin: 8px 0;
 }
 
@@ -70,14 +70,40 @@
 .movie-info__tabs button {
   border: none;
   font-size: 16px;
-  padding: 8px;
-  margin-right: 4px;
-  
+  padding: 8px 16px;
+  margin-right: 2px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
 }
 
-.movie-info__description--text {
-  margin-top: 8px;
+.movie-info__tabs button:hover {
+  filter: brightness(0.7);
+}
+
+.movie-info__tabs button:focus,
+.movie-info__tavs button:focus-within {
+  color: white;
+  background-color: #576ca8;
+  border-bottom: 2px solid #1b264f;
+  outline: none !important;
+  cursor: default;
+  filter: brightness(1) !important;
+}
+
+.movie-info__description--overview {
+  padding-top: 8px;
   text-align: left;
+}
+
+/* 
+
+TABS
+
+*/
+
+#reviews {
+  display: none;
 }
 
 /* 
