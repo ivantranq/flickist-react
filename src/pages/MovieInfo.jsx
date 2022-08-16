@@ -35,11 +35,21 @@ const MovieInfo = () => {
   function handleClick(tabName) {
     console.log(tabName);
     const tabs = document.getElementsByClassName("movie-info__description");
+    const tabButtons = document.getElementsByClassName("movie-info__tab");
+    const selected = document.getElementById(`movie-info__tab--${tabName}`);
     console.log(tabs);
     for (let i = 0; i < tabs.length; i++) {
       tabs[i].style.display = "none";
+      if (tabButtons[i].classList.contains("tab-selected")) {
+        tabButtons[i].classList.remove("tab-selected");
+      }
     }
+    selected.classList.toggle("tab-selected");
     document.getElementById(tabName).style.display = "block";
+
+    // Below handles styling of tab buttons.
+
+    console.log("selected ", selected);
   }
 
   return (
@@ -77,6 +87,7 @@ const MovieInfo = () => {
             <div className="movie-info__tabs">
               <button
                 className="movie-info__tab"
+                id="movie-info__tab--overview"
                 onClick={() => handleClick("overview")}
                 autoFocus
               >
@@ -84,6 +95,7 @@ const MovieInfo = () => {
               </button>
               <button
                 className="movie-info__tab"
+                id="movie-info__tab--reviews"
                 onClick={() => handleClick("reviews")}
               >
                 Reviews

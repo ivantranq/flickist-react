@@ -81,13 +81,12 @@
   filter: brightness(0.7);
 }
 
-.movie-info__tabs button:focus,
-.movie-info__tavs button:focus-within {
+.tab-selected {
   color: white;
   background-color: #576ca8;
-  border-bottom: 2px solid #1b264f;
+  border-bottom: 2px solid #1b264f !important;
   outline: none !important;
-  cursor: default;
+  cursor: default !important;
   filter: brightness(1) !important;
 }
 
