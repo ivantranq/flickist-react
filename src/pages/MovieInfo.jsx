@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import NA from "../components/NA";
+import Reviews from "../components/Reviews";
 
 const MovieInfo = () => {
   const { id } = useParams();
@@ -86,10 +87,10 @@ const MovieInfo = () => {
             </div>
             <div className="movie-info__tabs">
               <button
-                className="movie-info__tab"
+                className="movie-info__tab tab-selected"
                 id="movie-info__tab--overview"
                 onClick={() => handleClick("overview")}
-                autoFocus
+                
               >
                 Overview
               </button>
@@ -115,7 +116,7 @@ const MovieInfo = () => {
               className="movie-info__description movie-info__description--reviews"
               id="reviews"
             >
-              <h2>Reviews Here</h2>
+              <Reviews />
             </div>
           </div>
         </div>
