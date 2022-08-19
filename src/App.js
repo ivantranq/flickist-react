@@ -5,6 +5,7 @@ import Search from "./pages/Search";
 import Navbar from "./components/Navbar";
 import MovieInfo from "./pages/MovieInfo";
 import "./App.css";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path={`/search/:input`} element={<Search />} />
           <Route path="/:id" element={<MovieInfo />} />
+          <Route path="/register" element={<Register />}/>
         </Routes>
       </div>
     </Router>

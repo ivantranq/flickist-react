@@ -1,24 +1,25 @@
-import React from 'react';
-import './Reviews.css'
-import { db, auth } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import React from "react";
+import "./Reviews.css";
+import { db, auth } from "../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Reviews = () => {
-    async function createReview(title, description, rating, text) {
-        const review = {
-            title: title,
-            description: description,
-            rating: rating,
-            text: text
-        }
+  async function createReview(title, description, rating, text) {
+    const review = {
+      title: title,
+      description: description,
+      rating: rating,
+      text: text,
+    };
+    await addDoc(collection(db, "reviews", review));
+  }
 
-        await addDoc(collection(dv, "reviews", review));
-    }
-    return (
-        <div className='reviews-section'>
-            <h2>Reviews Here</h2>
-        </div>
-    );
-}
+  return (
+    <div className="reviews-section">
+      <h2>Reviews Here</h2>
+    </div>
+  );
+};
 
 export default Reviews;

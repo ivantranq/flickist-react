@@ -1,0 +1,29 @@
+#register-page {
+    background-color: #FFF7F1;
+    height: calc(100vh - 86px);
+}
+
+.register-page__container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 256px;
+
+}
+
+.form__input {
+    font-size: medium;
+    margin: 4px 8px 8px 8px;
+    border-radius: 0px;
+    width: 100%;
+}
+
+.register__form label {
+    margin-top: 8px;
+    float: left;
+}
