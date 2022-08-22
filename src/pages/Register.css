@@ -34,17 +34,17 @@
     text-align: left;
 }
 
-.register__form button {
-    color: white;
-    font-size: large;
-    margin-top: 16px;
-    padding-left: 16px;
-    padding-right: 16px;
-    background-color: black;
-    font-weight: 700;
+.register-button {
+    color: white !important;
+    font-size: large !important;
+    margin-top: 16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    background-color: black !important;
+    font-weight: 700 !important;
 }
 
-.register__form button:hover {
-    background: lightgray;
-    color: black;
+.register-button:hover {
+    background: lightgray !important;
+    color: black !important;
 }

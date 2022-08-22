@@ -2,78 +2,88 @@ import React from "react";
 import "./Register.css";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const Register = () => {
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(event);
     for (let i = 0; i < 4; i++) {
       console.log(event.target[i].value);
     }
+    if (passwordsMatching()) {
+      console.log("passwords match");
+    }
+  }
+
+  function register(email, password) {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function passwordsMatching() {
-    if (
-      document.getElementById("password").value ==
-      document.getElementById("password-confirm").value
-    ) {
-      document.getElementById("message").style.color = "green";
-      document.getElementById("message").innerHTML = "matching";
+    const password = document.getElementById("password");
+    const confirm = document.getElementById("password-confirm");
+    if (confirm.value === password.value) {
+      confirm.setCustomValidity("Passwords Match");
+      confirm.reportValidity();
+      return true;
     } else {
-      document.getElementById("message").style.color = "red";
-      document.getElementById("message").innerHTML = "not matching";
+      confirm.setCustomValidity("Passwords do not match");
+      confirm.reportValidity();
+      return false;
     }
   }
+
   return (
     <div id="register-page">
       <div className="register-page__container">
         <h2>Register your account</h2>
-        <form className="register__form" onSubmit={handleSubmit}>
-          <div className="register__form--label-input">
-            <label htmlFor="username">Name</label>
-            <input
-              required
-              type="text"
-              className="form__input"
-              placeholder="Enter your name..."
-              name="username"
-            />
-          </div>
-          <div className="register__form--label-input">
-            <label htmlFor="email">Email address</label>
-            <input
-              required
-              type="email"
-              className="form__input"
-              placeholder="Enter your email address..."
-              name="email"
-            />
-          </div>
-          <div className="register__form--label-input">
-            <label htmlFor="password">Password</label>
-            <input
-              required
-              type="password"
-              className="form__input"
-              placeholder="Enter your password..."
-              id="password"
-              name="password"
-              onChange={passwordsMatching()}
-            />
-          </div>
-          <div className="register__form--label-input">
-            <label htmlFor="password-confirm">Confirm Password</label>
-            <input
-              required
-              type="password"
-              className="form__input"
-              placeholder="Enter your password again..."
-              id="password-confirm"
-              name="password-confirm"
-              onChange={passwordsMatching()}
-            />
-            <span id="message"></span>
-          </div>
-          <Button type="submit">Register</Button>
+        <form className="register__form" onSubmit={handleSubmit} noValidate>
+          <label htmlFor="username">Name</label>
+          <input
+            required
+            type="text"
+            className="form__input"
+            placeholder="Enter your name..."
+            name="username"
+          />
+          <label htmlFor="email">Email address</label>
+          <input
+            required
+            type="email"
+            className="form__input"
+            placeholder="Enter your email address..."
+            name="email"
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            required
+            type="password"
+            className="form__input"
+            placeholder="Enter your password..."
+            id="password"
+            name="password"
+          />
+          <label htmlFor="password-confirm">Confirm Password</label>
+          <input
+            required
+            type="password"
+            className="form__input"
+            placeholder="Enter your password again..."
+            id="password-confirm"
+            name="password-confirm"
+            onChange={() => passwordsMatching()}
+          />
+          <Button type="submit" className="register-button">
+            Register
+          </Button>
         </form>
         <p className="sign-in">
           Already have an account? <Link to="/login">Log In</Link>
