@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.css";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
     console.log(event);
@@ -13,14 +16,20 @@ const Register = () => {
       console.log(event.target[i].value);
     }
     if (passwordsMatching()) {
-      console.log("passwords match");
+      register(
+        event.target[0].value,
+        event.target[1].value,
+        event.target[2].value
+      );
+      // navigate("/login");
     }
   }
 
-  function register(email, password) {
+  function register(name, email, password) {
     createUserWithEmailAndPassword(auth, email, password)
-      .then((user) => {
+      .then(({ user }) => {
         console.log(user);
+        user["displayName"] = name;
       })
       .catch((error) => {
         console.log(error);
