@@ -10,6 +10,19 @@ const Register = () => {
       console.log(event.target[i].value);
     }
   }
+
+  function passwordsMatching() {
+    if (
+      document.getElementById("password").value ==
+      document.getElementById("password-confirm").value
+    ) {
+      document.getElementById("message").style.color = "green";
+      document.getElementById("message").innerHTML = "matching";
+    } else {
+      document.getElementById("message").style.color = "red";
+      document.getElementById("message").innerHTML = "not matching";
+    }
+  }
   return (
     <div id="register-page">
       <div className="register-page__container">
@@ -42,6 +55,9 @@ const Register = () => {
               type="password"
               className="form__input"
               placeholder="Enter your password..."
+              id="password"
+              name="password"
+              onChange={passwordsMatching()}
             />
           </div>
           <div className="register__form--label-input">
@@ -51,8 +67,11 @@ const Register = () => {
               type="password"
               className="form__input"
               placeholder="Enter your password again..."
+              id="password-confirm"
               name="password-confirm"
+              onChange={passwordsMatching()}
             />
+            <span id="message"></span>
           </div>
           <Button type="submit">Register</Button>
         </form>
