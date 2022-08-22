@@ -12,18 +12,39 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 256px;
+    width: 360px;
 
 }
 
+.register__form--label-input {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
 .form__input {
     font-size: medium;
-    margin: 4px 8px 8px 8px;
+    margin: 4px 0px 8px 0px;
     border-radius: 0px;
     width: 100%;
 }
 
-.register__form label {
-    margin-top: 8px;
-    float: left;
+.register__form--label-input label {
+    text-align: left;
+}
+
+.register__form button {
+    color: white;
+    font-size: large;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: black;
+    font-weight: 700;
+}
+
+.register__form button:hover {
+    background: lightgray;
+    color: black;
 }
