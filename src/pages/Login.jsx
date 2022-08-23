@@ -6,6 +6,9 @@ import { Button } from "@mui/material";
 
 const Login = () => {
   const [user, setUser] = useState({});
+  cosnt[(isLoggedIn, setIsLoggedIn)] = useState(
+    localStorage.getItem("authenticated") || false
+  );
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -21,6 +24,7 @@ const Login = () => {
       .then(({ user }) => {
         console.log(user);
         setUser(user);
+        localStorage.setItem("authenticated", true);
       })
       .catch((error) => {
         console.log(error);
@@ -30,7 +34,7 @@ const Login = () => {
     <div id="login">
       <div className="login__container">
         <h1 className="login__heading">Login</h1>
-        <form className="login__form">
+        <form className="login__form" onSubmit={login}>
           <label htmlFor="email" className="login-input__label">
             Email
           </label>
