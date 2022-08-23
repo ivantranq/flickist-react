@@ -53,6 +53,10 @@ const Register = () => {
     <div id="register-page">
       <div className="register-page__container">
         <h2>Register your account</h2>
+        <p>
+          Once you hit Register, you will be logged in and taken to the homepage
+          straight away
+        </p>
         <form className="register__form" onSubmit={handleSubmit} noValidate>
           <label htmlFor="username">Name</label>
           <input
