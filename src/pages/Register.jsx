@@ -16,12 +16,11 @@ const Register = () => {
       console.log(event.target[i].value);
     }
     if (passwordsMatching()) {
-      register(
-        event.target[0].value,
-        event.target[1].value,
-        event.target[2].value
-      );
-      // navigate("/login");
+      const name = event.target[0].value;
+      const email = event.target[1].value;
+      const password = event.target[2].value;
+      register(name, email, password);
+      navigate("/");
     }
   }
 
