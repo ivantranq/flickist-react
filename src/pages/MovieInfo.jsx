@@ -90,7 +90,6 @@ const MovieInfo = () => {
                 className="movie-info__tab tab-selected"
                 id="movie-info__tab--overview"
                 onClick={() => handleClick("overview")}
-                
               >
                 Overview
               </button>
@@ -116,7 +115,7 @@ const MovieInfo = () => {
               className="movie-info__description movie-info__description--reviews"
               id="reviews"
             >
-              <Reviews />
+              <Reviews movieTitle={movieInfo.Title} />
             </div>
           </div>
         </div>

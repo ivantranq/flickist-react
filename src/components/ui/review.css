@@ -1,0 +1,18 @@
+.review {
+  display: flex;
+  margin-top: 16px;
+}
+
+.review-info__container{
+  text-align: left;
+  margin-left: 16px;
+}
+
+.review-text {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.out-of-five {
+  font-size: small;
+}

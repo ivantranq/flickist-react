@@ -1,19 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./Reviews.css";
 import { db, auth } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+import { query, collection, where, getDocs, addDoc } from "firebase/firestore";
+import Review from "./ui/review";
 
-const Reviews = () => {
+const Reviews = ({ movieTitle }) => {
   const [user, setUser] = useState({});
+  const [reviews, setReviews] = useState(null);
 
   useEffect(() => {
+    console.log(movieTitle);
     onAuthStateChanged(auth, (user) => {
       console.log(user);
       if (user) {
         setUser(user);
       }
     });
+    getReviewsByMovieTitle(movieTitle);
+    console.log(reviews);
   }, []);
 
   async function createReview(title, description, rating, text) {
@@ -26,10 +31,23 @@ const Reviews = () => {
     await addDoc(collection(db, "reviews", review));
   }
 
-  return (
+  async function getReviewsByMovieTitle(movieTitle) {
+    const reviewsCollectionTitleRef = await query(
+      collection(db, "reviews"),
+      where("title", "==", movieTitle)
+    );
+    const data = await getDocs(reviewsCollectionTitleRef);
+    const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setReviews(response);
+  }
+
+  return reviews ? (
     <div className="reviews-section">
-      <h2>Reviews Here</h2>
+      <div className="create-review"></div>
+      <Review reviewObject={reviews[0]} />
     </div>
+  ) : (
+    <div></div>
   );
 };
 
