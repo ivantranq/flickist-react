@@ -6,3 +6,7 @@
 .reviews-section::-webkit-scrollbar { 
   display: none;  /* Safari and Chrome */
 }
+
+.no-reviews{
+  margin-top: 24px;
+}

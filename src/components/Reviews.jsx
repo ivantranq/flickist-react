@@ -7,7 +7,7 @@ import Review from "./ui/review";
 
 const Reviews = ({ movieTitle }) => {
   const [user, setUser] = useState({});
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     console.log(movieTitle);
@@ -41,13 +41,17 @@ const Reviews = ({ movieTitle }) => {
     setReviews(response);
   }
 
-  return reviews ? (
+  return reviews.length > 0 ? (
     <div className="reviews-section">
       <div className="create-review"></div>
-      <Review reviewObject={reviews[0]} />
+      {reviews.map((review) => (
+        <Review reviewObject={review} />
+      ))}
     </div>
   ) : (
-    <div></div>
+    <div>
+      <h2 className="no-reviews">No reviews available</h2>
+    </div>
   );
 };
 
