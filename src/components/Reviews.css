@@ -10,3 +10,30 @@
 .no-reviews{
   margin-top: 24px;
 }
+
+.new-review {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-review {
+  margin-bottom: 8px;
+}
+
+.title-review, .description-review {
+  width: 100%;
+}
+
+.title-review, .rating-review {
+  font-size: 14px;
+  padding: 8px !important;
+  border-radius: none !important;
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.description-review {
+  resize: none;
+  outline: none;
+  border: solid 1px transparent;
+}

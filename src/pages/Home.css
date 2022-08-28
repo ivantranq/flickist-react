@@ -18,9 +18,7 @@
 }
 
 .home p,
-.home h1,
-input,
-form {
+.home h1 {
   padding: 12px 24px;
 }
 

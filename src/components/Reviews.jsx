@@ -41,16 +41,36 @@ const Reviews = ({ movieTitle }) => {
     setReviews(response);
   }
 
-  return reviews.length > 0 ? (
-    <div className="reviews-section">
-      <div className="create-review"></div>
-      {reviews.map((review) => (
-        <Review reviewObject={review} />
-      ))}
-    </div>
-  ) : (
-    <div>
-      <h2 className="no-reviews">No reviews available</h2>
+  return (
+    <div className="reviews">
+      <div className="create-review">
+        <div className="create-review__logged-out"></div>
+        <form className="new-review">
+          <label htmlFor="">Rating</label>
+          <input type="number" min={0} max={5} className="rating-review" />
+          <label htmlFor="">Your Review</label>
+          <input type="text" className="title-review" placeholder="Write a headline for your review here"/>
+          <textarea
+            name=""
+            id=""
+            cols="30"
+            rows="3"
+            className="description-review"
+            placeholder="Write your review here"
+          ></textarea>
+        </form>
+      </div>
+      {reviews.length > 0 ? (
+        <div className="reviews-section">
+          {reviews.map((review) => (
+            <Review reviewObject={review} />
+          ))}
+        </div>
+      ) : (
+        <div>
+          <h2 className="no-reviews">No reviews available</h2>
+        </div>
+      )}
     </div>
   );
 };
