@@ -61,7 +61,7 @@ SKELETON
   display: flex;
   flex-direction: column;
   width: 30%;
-  height: 450px;
+  max-height: 450px;
   margin-right: 8px;
 }
 .result__img--skeleton {

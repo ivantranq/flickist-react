@@ -27,6 +27,7 @@ const Reviews = ({ movieTitle }) => {
   }, []);
 
   async function createReview(title, description, rating, text) {
+    console.log("createReview Accessed");
     const review = {
       title: title,
       description: description,
@@ -34,17 +35,17 @@ const Reviews = ({ movieTitle }) => {
       text: text,
       username: user.email,
     };
-    await addDoc(collection(db, "reviews", review));
+    await addDoc(collection(db, "reviews"), review);
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log(event);
     const rating = event.target[0].value;
     const headline = event.target[1].value;
     const text = event.target[2].value;
 
-    createReview(movieTitle, headline, rating, text);
+    await createReview(movieTitle, headline, rating, text);
     window.location.reload();
   }
 
@@ -106,7 +107,7 @@ const Reviews = ({ movieTitle }) => {
       {reviews.length > 0 ? (
         <div className="reviews-section">
           {reviews.map((review) => (
-            <Review reviewObject={review} />
+            <Review reviewObject={review} key={review.id} />
           ))}
         </div>
       ) : (

@@ -9,9 +9,7 @@ import { isUserEmpty } from "../pages/Helpers";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setisLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") || false
-  );
+
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -25,8 +23,8 @@ const Navbar = () => {
 
   function logout() {
     signOut(auth);
-    setisLoggedIn(false);
     setUser({});
+    alert("Logging out will take you back to homepage");
     navigate("/");
   }
 

@@ -9,9 +9,6 @@ import { isUserEmpty } from "./Helpers";
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({});
-  const [isLoggedIn, setIsLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") || false
-  );
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -27,11 +24,10 @@ const Login = () => {
       .then(({ user }) => {
         console.log(user);
         setUser(user);
-        localStorage.setItem("isLoggedIn", true);
-        setIsLoggedIn(true);
       })
       .catch((error) => {
         console.log(error);
+        alert("User does not exist, please register an account.");
       });
 
     navigate("/");

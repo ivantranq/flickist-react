@@ -1,6 +1,5 @@
 import React from "react";
 import "./review.css";
-import { db } from "../../firebase";
 import { Avatar } from "@mui/material";
 
 const Review = ({ reviewObject }) => {
