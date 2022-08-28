@@ -4,6 +4,9 @@ import { db, auth } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { query, collection, where, getDocs, addDoc } from "firebase/firestore";
 import Review from "./ui/review";
+import { Button } from "@mui/material";
+import { isUserEmpty } from "../pages/Helpers";
+import { Link } from "react-router-dom";
 
 const Reviews = ({ movieTitle }) => {
   const [user, setUser] = useState({});
@@ -15,6 +18,8 @@ const Reviews = ({ movieTitle }) => {
       console.log(user);
       if (user) {
         setUser(user);
+      } else {
+        // window.location.reload(false);
       }
     });
     getReviewsByMovieTitle(movieTitle);
@@ -27,8 +32,20 @@ const Reviews = ({ movieTitle }) => {
       description: description,
       rating: rating,
       text: text,
+      username: user.email,
     };
     await addDoc(collection(db, "reviews", review));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(event);
+    const rating = event.target[0].value;
+    const headline = event.target[1].value;
+    const text = event.target[2].value;
+
+    createReview(movieTitle, headline, rating, text);
+    window.location.reload();
   }
 
   async function getReviewsByMovieTitle(movieTitle) {
@@ -43,23 +60,49 @@ const Reviews = ({ movieTitle }) => {
 
   return (
     <div className="reviews">
-      <div className="create-review">
-        <div className="create-review__logged-out"></div>
-        <form className="new-review">
-          <label htmlFor="">Rating</label>
-          <input type="number" min={0} max={5} className="rating-review" />
-          <label htmlFor="">Your Review</label>
-          <input type="text" className="title-review" placeholder="Write a headline for your review here"/>
-          <textarea
-            name=""
-            id=""
-            cols="30"
-            rows="3"
-            className="description-review"
-            placeholder="Write your review here"
-          ></textarea>
-        </form>
-      </div>
+      {isUserEmpty(user) ? (
+        <div className="create-review__logged-out">
+          <h2>
+            <Link to="/login">Sign in</Link> to leave a review!
+          </h2>
+        </div>
+      ) : (
+        <div className="create-review">
+          <form className="new-review" onSubmit={handleSubmit}>
+            <span>
+              <label htmlFor="new-review__rating" className="rating-label">
+                Rating
+              </label>
+              <input
+                type="number"
+                min={0}
+                max={5}
+                className="rating-review"
+                id="new-review__rating"
+                placeholder="5"
+              />
+            </span>
+
+            <label htmlFor="headline">Your Review</label>
+            <input
+              type="text"
+              className="title-review"
+              placeholder="Write a headline for your review here"
+              id="headline"
+            />
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="3"
+              className="description-review"
+              placeholder="Write your review here"
+            ></textarea>
+            <Button type="submit">Submit Review</Button>
+          </form>
+        </div>
+      )}
+
       {reviews.length > 0 ? (
         <div className="reviews-section">
           {reviews.map((review) => (

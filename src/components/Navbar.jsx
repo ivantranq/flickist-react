@@ -27,6 +27,7 @@ const Navbar = () => {
     signOut(auth);
     setisLoggedIn(false);
     setUser({});
+    navigate("/");
   }
 
   return (

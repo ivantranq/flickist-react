@@ -11,9 +11,29 @@
   margin-top: 24px;
 }
 
+/* 
+
+CREATE A REVIEW
+
+*/
+
+.create-review__logged-out {
+  margin: 16px;
+}
+
 .new-review {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+
+.new-review span {
+  margin-bottom: 8px;
+}
+
+.rating-label {
+  margin-right: 8px;
 }
 
 .title-review {
@@ -21,7 +41,7 @@
 }
 
 .title-review, .description-review {
-  width: 100%;
+  width: 90%;
 }
 
 .title-review, .rating-review {
@@ -36,4 +56,5 @@
   resize: none;
   outline: none;
   border: solid 1px transparent;
+  padding: 8px;
 }
