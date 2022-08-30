@@ -16,3 +16,7 @@
 .out-of-five {
   font-size: small;
 }
+
+.MuiAvatar-root {
+  text-transform: capitalize;
+}

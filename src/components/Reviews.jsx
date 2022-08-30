@@ -81,6 +81,7 @@ const Reviews = ({ movieTitle }) => {
                 className="rating-review"
                 id="new-review__rating"
                 placeholder="5"
+                required
               />
             </span>
 
@@ -90,6 +91,7 @@ const Reviews = ({ movieTitle }) => {
               className="title-review"
               placeholder="Write a headline for your review here"
               id="headline"
+              required
             />
             <textarea
               name=""
@@ -98,6 +100,7 @@ const Reviews = ({ movieTitle }) => {
               rows="3"
               className="description-review"
               placeholder="Write your review here"
+              required
             ></textarea>
             <Button type="submit">Submit Review</Button>
           </form>

@@ -156,3 +156,32 @@ SKELETON
   margin-top: 20px;
   height: 250px;
 }
+
+/* 
+
+RESPONSIVENESS
+
+*/
+
+@media (max-width: 728px) {
+
+  .movie-info {
+    height: auto;
+  }
+
+  .movie-info__body {
+    max-width: 800px;
+    flex-direction: column;
+  }
+
+  .movie-info__body--skeleton {
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 458px) {
+  .movie-info__description--container {
+    margin-left: 0;
+  }
+}

@@ -3,6 +3,7 @@
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  height: calc(100vh - 86px);
 }
 
 .search__header {
@@ -38,42 +39,7 @@
   justify-content: center;
 }
 
-/* 
 
-SKELETON
-
-*/
-
-.result__img--skeleton,
-.result__title--skeleton {
-  background-color: lightgray;
-  margin-top: 8px;
-}
-.results--skeleton {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #fff7f1;
-  height: auto;
-  justify-content: center;
-}
-
-.result-item--skeleton {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  max-height: 450px;
-  margin-right: 8px;
-}
-.result__img--skeleton {
-  width: 100%;
-  max-width: 300px;
-  height: 80%;
-}
-
-.result__title--skeleton {
-  width: 70%;
-  height: 20px;
-}
 
 /* 
 
@@ -82,7 +48,7 @@ NO RESULTS
 */
 
 .no-results {
-  height: 80vh;
+  /* height: 80vh; */
   width: 100%;
 }
 
@@ -94,3 +60,10 @@ NO RESULTS
 .no-results__img {
   width: 100%;
 }
+
+/* 
+
+RESPONSIVENESS
+
+*/
+
