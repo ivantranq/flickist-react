@@ -28,9 +28,9 @@
 }
 
 .navbar__link--signup {
-  background-color: black !important;
+  background-color: red !important;
   font-weight: 600 !important;
-  border-radius: 8px !important;
+  border-radius: 4px !important;
 }
 
 .burger-menu {

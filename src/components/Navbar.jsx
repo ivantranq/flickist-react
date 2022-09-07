@@ -57,7 +57,7 @@ const Navbar = () => {
             className="navbar__link--signup"
             onClick={() => navigate("/register")}
           >
-            Register
+            Sign Up
           </Button>
         </div>
       ) : (

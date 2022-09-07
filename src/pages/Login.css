@@ -1,6 +1,42 @@
 #login {
-  background-color: #FFF7F1;
   height: calc(100vh - 86px);
+}
+
+.background__img--wrapper {
+  height: 100%;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background__img {
+  min-width: 100%;
+  filter: brightness(0.1);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.login__container {
+  background-color: rgb(28, 28, 28, 0.7);
+  width: 100%;
+  max-width: 450px;
+  height: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 60px 68px 40px 68px;
+
+}
+
+.login__heading{
+  color: white;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.login-input__label {
+  color: transparent;
 }
 
 .login__form {
@@ -16,16 +52,27 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-
 }
 
 .login-input {
   font-size: medium;
-  margin: 4px 0px 8px 0px;
-  border-radius: 0px;
+  margin-bottom: 16px;
+  border-radius: 4px;
   width: 100%;
-  padding: 12px 24px;
+  padding: 16px 16px 12px 16px;
+  background-color: #595959;
+  color: white;
 }
+
+.login-input::placeholder {
+  color: white;
+}
+
+.login-input:focus {
+  outline: none;
+}
+
+
 
 .login-button {
   color: white !important;
@@ -33,11 +80,49 @@
   margin-top: 16px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
-  background-color: black !important;
+  background-color: red !important;
   font-weight: 700 !important;
+  text-transform: capitalize !important;
+  width: 100% !important;
 }
 
-.login-button:hover {
-  background: lightgray !important;
-  color: black !important;
+.sign-up__text {
+  text-align: left;
+  margin-top: 80px;
+  color: darkgray;
+}
+
+.sign-up__text span {
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.sign-up__text span:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 728px) {
+  .background__img {
+    filter: brightness(0);
+    opacity: 1;
+  }
+
+  .login__container {
+    background-color: transparent;
+    width: 100%;
+    max-width: none;
+  }
+
+  .login__form {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width:458px) {
+  .login__container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }

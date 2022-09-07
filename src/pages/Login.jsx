@@ -5,6 +5,7 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { isUserEmpty } from "./Helpers";
+import BackgroundImg from "./assets/home__bg-img.jpg";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -44,31 +45,37 @@ const Login = () => {
 
   return isUserEmpty(user) ? (
     <div id="login">
+      <figure className="background__img--wrapper">
+        <img src={BackgroundImg} alt="" className="background__img" />
+      </figure>
       <div className="login__container">
-        <h1 className="login__heading">Login</h1>
+        <h1 className="login__heading">Sign In</h1>
         <form className="login__form" onSubmit={handleSubmit}>
-          <label htmlFor="email" className="login-input__label">
+          {/* <label htmlFor="email" className="login-input__label">
             Email
-          </label>
+          </label> */}
           <input
             type="email"
-            placeholder="E.g. example@email.com"
+            placeholder="Email"
             className="login-input"
             required
           />
-          <label htmlFor="password" className="login-input__label">
+          {/* <label htmlFor="password" className="login-input__label">
             Password
-          </label>
+          </label> */}
           <input
             type="password"
             className="login-input"
-            placeholder="Enter Password"
+            placeholder="Password"
             required
           />
           <Button className="login-button" type="submit">
-            Login
+            Sign In
           </Button>
         </form>
+        <p className="sign-up__text">
+          New to Flickist? <span onClick={() => navigate('/register')}>Sign Up Now</span>
+        </p>
       </div>
     </div>
   ) : (

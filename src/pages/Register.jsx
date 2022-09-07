@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import BackgroundImg from "./assets/home__bg-img.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -51,44 +52,47 @@ const Register = () => {
 
   return (
     <div id="register-page">
+      <figure className="background__img--wrapper">
+        <img src={BackgroundImg} alt="" className="background__img" />
+      </figure>
       <div className="register-page__container">
-        <h2>Register your account</h2>
+        <h2>Get Started</h2>
         <p>
           Once you hit Register, you will be logged in and taken to the homepage
           straight away
         </p>
         <form className="register__form" onSubmit={handleSubmit} noValidate>
-          <label htmlFor="username">Name</label>
+          {/* <label htmlFor="username">Name</label> */}
           <input
             required
             type="text"
             className="form__input"
-            placeholder="Enter your name..."
+            placeholder="Name"
             name="username"
           />
-          <label htmlFor="email">Email address</label>
+          {/* <label htmlFor="email">Email address</label> */}
           <input
             required
             type="email"
             className="form__input"
-            placeholder="Enter your email address..."
+            placeholder="Email"
             name="email"
           />
-          <label htmlFor="password">Password</label>
+          {/* <label htmlFor="password">Password</label> */}
           <input
             required
             type="password"
             className="form__input"
-            placeholder="Enter your password..."
+            placeholder="Password"
             id="password"
             name="password"
           />
-          <label htmlFor="password-confirm">Confirm Password</label>
+          {/* <label htmlFor="password-confirm">Confirm Password</label> */}
           <input
             required
             type="password"
             className="form__input"
-            placeholder="Enter your password again..."
+            placeholder="Confirm Password"
             id="password-confirm"
             name="password-confirm"
             onChange={() => passwordsMatching()}

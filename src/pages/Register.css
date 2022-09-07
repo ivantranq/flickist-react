@@ -1,15 +1,44 @@
 #register-page {
-    background-color: #FFF7F1;
     height: calc(100vh - 86px);
 }
 
+.background__img--wrapper {
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.background__img {
+    min-width: 100%;
+    filter: brightness(0.1);
+    opacity: 0.8;
+    z-index: -1;
+}
+
 .register-page__container {
-    max-width: 1000px;
-    margin: 0 auto;
+    background-color: rgb(28, 28, 28, 0.7);
+    width: 100%;
+    max-width: 450px;
+    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px 68px 40px 68px;
+
 }
 
 .register-page__container p {
     margin-top: 16px;
+    color: white;
+    text-align: left;
+}
+
+.register-page__container h2 {
+    color: white;
+    text-align: left;
+    font-size: 32px;
 }
 
 .register__form {
@@ -28,13 +57,26 @@
     justify-content: center;
     width: 100%;
 }
+
 .form__input {
     font-size: medium;
-    margin: 4px 0px 8px 0px;
-    border-radius: 0px;
+    margin-bottom: 16px;
+    border-radius: 4px;
     width: 100%;
-    padding: 12px 24px;
+    padding: 16px 16px 12px 16px;
+    background-color: #595959;
+    color: white;
 }
+
+.form__input:focus {
+    outline: none;
+}
+
+.form__input::placeholder {
+    color: white;
+}
+
+
 
 .register__form--label-input label {
     text-align: left;
@@ -46,11 +88,21 @@
     margin-top: 16px !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
-    background-color: black !important;
+    background-color: red !important;
     font-weight: 700 !important;
+    text-transform: capitalize !important;
+    width: 100%;
 }
 
-.register-button:hover {
-    background: lightgray !important;
-    color: black !important;
+.sign-in {
+    color: darkgray !important;
+}
+
+.sign-in a {
+    color: white;
+    text-decoration: none;
+}
+
+.sign-in a:hover {
+    text-decoration: underline;
 }
