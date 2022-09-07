@@ -64,7 +64,7 @@ const Reviews = ({ movieTitle }) => {
       {isUserEmpty(user) ? (
         <div className="create-review__logged-out">
           <h2>
-            <Link to="/login">Sign in</Link> to leave a review!
+            <Link to="/register">Sign up</Link> to leave a review!
           </h2>
         </div>
       ) : (

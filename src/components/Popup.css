@@ -1,0 +1,25 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: rgb(28, 28, 28, 0.7);
+  z-index: 98;
+}
+
+.popup__container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 750px;
+  bottom: 0px;
+  height: calc(100vh - 36px);
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  background-color: #1c1c1c;
+  z-index: 99;
+  /* overflow-y: scroll; */
+}

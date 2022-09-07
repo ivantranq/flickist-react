@@ -106,3 +106,28 @@
 .sign-in a:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 728px) {
+    .background__img {
+      filter: brightness(0);
+      opacity: 1;
+    }
+  
+    .register-page__container {
+      background-color: transparent;
+      width: 100%;
+      max-width: none;
+    }
+  
+    .register__form {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  
+  @media (max-width:458px) {
+    .register-page__container {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  }
