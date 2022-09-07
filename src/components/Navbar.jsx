@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { isUserEmpty } from "../pages/Helpers";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -28,6 +28,12 @@ const Navbar = () => {
     navigate("/");
   }
 
+  function showMenu() {
+    const navbarLinksEl = document.getElementsByClassName("navbar__links")[0];
+    console.log(navbarLinksEl);
+    navbarLinksEl.classList.toggle("navbar__links--show");
+  }
+
   return (
     <div className="navbar">
       <div className="navbar__logo" onClick={() => navigate("/")}>
@@ -35,6 +41,11 @@ const Navbar = () => {
           <img src={logo} alt="" className="logo__img" />
         </figure>
       </div>
+
+      <Button className="burger-menu" onClick={() => showMenu()}>
+        <MenuIcon></MenuIcon>
+      </Button>
+
       {isUserEmpty(user) ? (
         <div className="navbar__links">
           <Button className="navbar__link" onClick={() => navigate("/login")}>

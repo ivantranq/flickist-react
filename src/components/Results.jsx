@@ -7,17 +7,19 @@ const Results = ({ isLoading, searchResults, input }) => {
       {!isLoading ? (
         <>
           <div className="results">
-            {input !== "-" &&
-              searchResults.map(({ Title, Poster, Type, Year, imdbID }) => (
-                <ResultItem
-                  key={imdbID}
-                  Title={Title}
-                  Poster={Poster}
-                  Type={Type}
-                  Year={Year}
-                  imdbID={imdbID}
-                />
-              ))}
+            <div className="results--container">
+              {input !== "-" &&
+                searchResults.map(({ Title, Poster, Type, Year, imdbID }) => (
+                  <ResultItem
+                    key={imdbID}
+                    Title={Title}
+                    Poster={Poster}
+                    Type={Type}
+                    Year={Year}
+                    imdbID={imdbID}
+                  />
+                ))}
+            </div>
           </div>
         </>
       ) : (

@@ -34,6 +34,10 @@
   border-radius: 8px;
 }
 
+.result__title {
+  color: white;
+}
+
 /* 
 
 SKELETON
@@ -49,7 +53,7 @@ SKELETON
 .results--skeleton {
   display: flex;
   flex-wrap: wrap;
-  background-color: #fff7f1;
+  background-color: #1c1c1c;
   height: 100vh;
   justify-content: center;
 }

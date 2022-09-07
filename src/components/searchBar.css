@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 99px;
 }
 
 .search-form__input {
@@ -10,5 +11,33 @@
   border: none;
   font-size: 24px;
   padding: 12px 24px;
+  outline: none;
+  background-color: transparent;
+  color: white !important;
+}
+
+.search-form__input::placeholder {
+  color: white;
+}
+
+.movie-form__btn {
+  margin-left: 0 !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border-top-right-radius: 99px !important;
+  border-bottom-right-radius: 99px !important;
+}
+
+@media (max-width: 458px) {
+
+  .search-form__input {
+    padding-left: 16px;
+    padding-right: 0;
+    font-size: 20px;
+  }
   
+  .MuiButtonBase-root{
+    width: 100%;
+    margin-left: 0 !important;
+  }
 }

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Results from "../components/Results";
 import Void from "../assets/Void.svg";
+import BackgroundImg from "./assets/home__bg-img.jpg";
 
 const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,24 +57,28 @@ const Search = () => {
 
   return (
     <div className="search">
+      <figure className="search__background-img--wrapper">
+        <img src={BackgroundImg} alt="" className="search__background-img" />
+      </figure>
       <SearchBar />
-      <hr />
       <div className="search__header">
-        <h2 className="results__title">Search results for "{input}"</h2>
-        <select
-          id="filter"
-          className="results__filter"
-          defaultValue="DEFAULT"
-          onChange={(event) => filterMovies(event.target.value)}
-        >
-          <option value="DEFAULT" disabled>
-            Sort
-          </option>
-          <option value="A_TO_Z">Alphabetical, A - Z</option>
-          <option value="Z_TO_A">Alphabetical, Z - A</option>
-          <option value="YEAR_HIGH_TO_LOW">Latest Release</option>
-          <option value="YEAR_LOW_TO_HIGH">Earliest Release</option>
-        </select>
+        <div className="search__header--container">
+          <h2 className="results__title">Search results for "{input}"</h2>
+          <select
+            id="filter"
+            className="results__filter"
+            defaultValue="DEFAULT"
+            onChange={(event) => filterMovies(event.target.value)}
+          >
+            <option value="DEFAULT" disabled>
+              Sort
+            </option>
+            <option value="A_TO_Z">Alphabetical, A - Z</option>
+            <option value="Z_TO_A">Alphabetical, Z - A</option>
+            <option value="YEAR_HIGH_TO_LOW">Latest Release</option>
+            <option value="YEAR_LOW_TO_HIGH">Earliest Release</option>
+          </select>
+        </div>
       </div>
       {!noResults ? (
         <Results
