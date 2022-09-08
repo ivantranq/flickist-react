@@ -22,7 +22,7 @@
     background-color: rgb(28, 28, 28, 0.7);
     width: 100%;
     max-width: 450px;
-    height: 70%;
+    min-height: 70%;
     margin-left: auto;
     margin-right: auto;
     padding: 60px 68px 40px 68px;
