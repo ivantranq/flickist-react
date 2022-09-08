@@ -3,30 +3,28 @@
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  height: calc(100vh - 90px);
-}
-
-.movie-info__header {
-  display: flex;
-  align-items: center;
-}
-
-.movie-info__header .MuiSvgIcon-root {
-  margin-right: 8px;
-  cursor: pointer;
 }
 
 .movie-info__body {
   display: flex;
-  margin-top: 32px;
-}
-.movie-info__title,
-.movie-info__director {
-  text-align: left;
+  flex-direction: column;
 }
 
-.movie-info__description--container {
-  margin-left: 32px;
+.poster__img--wrapper {
+  overflow-y: hidden;
+  max-height: 400px;
+  position: relative;
+}
+
+
+.movie-info__title{
+  text-align: left;
+  color: white;
+  margin-top: 16px;
+}
+
+.movie-info__stats {
+  display: flex;
 }
 
 .movie-info__description--container h4 {
@@ -47,19 +45,79 @@
   padding-right: 8px;
   border-right: 1px solid gray;
 }
-.movie-info__stats--ratings {
+
+.movie-info__stats--left {
   display: flex;
-  border-bottom: 1px solid black;
+  flex-direction: column;
+  width: 70%;
+  padding-right: 32px;
+  margin-top: 12px;
 }
 
-.movie-info__stats--ratings h5 {
+.movie-info__stats--ratings {
+  display: flex;
+}
+
+.movie-info__stats--rating {
+  display: flex;
+  align-items: center;
+}
+
+.movie-info__stats--rating h5{
+  color: white;
+}
+
+.movie-info__stats--rating figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+}
+
+.movie-info__stats--rating img {
+  height: 100%;
+}
+
+.movie-info__stats--rating h5 {
   display: flex;
   justify-content: space-between;
   padding-right: 8px;
   padding-left: 4px;
   margin-top: 4px;
   margin-bottom: 4px;
-  border-right: 1px solid black;
+  font-size: 14px;
+}
+
+.year,
+.rated,
+.runtime {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: white;
+  margin-right: 12px;
+}
+
+.rated {
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 1px solid #777777;
+}
+
+.movie-info__stats--right {
+  width: 30%;
+  margin-top: 12px;
+}
+
+.movie-info__stats--right p {
+  text-align: left;
+  color: white;
+  font-size: 14px;
+}
+
+.movie-info__stats--right span {
+  color: #777777;
+  font-size: 14px;
 }
 
 .movie-info__tabs {
@@ -91,18 +149,33 @@
 }
 
 .movie-info__description--overview {
-  padding-top: 8px;
+  padding-top: 24px;
   text-align: left;
+  color:white;
+  font-size: 14px;
 }
 
 /* 
 
-TABS
+REVIEWS
 
 */
 
 #reviews {
-  display: none;
+  color: white;
+  
+}
+
+#reviews a {
+  text-decoration: none;
+}
+
+#reviews a:visited {
+  color: inherit ;
+}
+
+#reviews a:hover {
+  text-decoration: underline;
 }
 
 /* 
@@ -113,8 +186,10 @@ SKELETON
 
 .movie-info__body--skeleton {
   display: flex;
+  flex-direction: column;
   margin: 16px auto;
   width: 900px;
+
 }
 
 .movie-info__img--skeleton,
@@ -184,4 +259,9 @@ RESPONSIVENESS
   .movie-info__description--container {
     margin-left: 0;
   }
+}
+
+@keyframes fadeup {
+  0% {display: none; transform: translateY(100px);}
+  100% {display: block; transform: translateY(0px);}
 }

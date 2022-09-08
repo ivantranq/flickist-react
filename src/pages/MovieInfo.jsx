@@ -5,10 +5,13 @@ import axios from "axios";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import NA from "../components/NA";
 import Reviews from "../components/Reviews";
+import imdbLogo from "./assets/imdbLogo.svg";
+import metacriticLogo from "./assets/metacritic.png";
+import rottenTomatoesLogo from "./assets/rottenTomatoesLogo.png";
 
-const MovieInfo = () => {
-  const { id } = useParams();
-  console.log(id);
+const MovieInfo = ({ id }) => {
+  // const { id } = useParams();
+  // console.log(id);
 
   const navigate = useNavigate();
 
@@ -55,10 +58,6 @@ const MovieInfo = () => {
 
   return (
     <div className="movie-info">
-      <div className="movie-info__header">
-        <ArrowBackIcon onClick={() => navigate(-1)} />
-        <h2>Back to Search</h2>
-      </div>
       {!isLoading ? (
         <div className="movie-info__body">
           <figure className="poster__img--wrapper">
@@ -69,23 +68,55 @@ const MovieInfo = () => {
             />
           </figure>
           <div className="movie-info__description--container">
-            <h2 className="movie-info__title">{`${movieInfo.Title} (${movieInfo.Year})`}</h2>
-            <h4 className="movie-info__director">{`Directed by ${movieInfo.Director}`}</h4>
+            <h2 className="movie-info__title">{`${movieInfo.Title}`}</h2>
             <div className="movie-info__stats">
-              <div className="movie-info__stats--descriptors">
-                <h5>Genres - {movieInfo.Genre}</h5>
-                <h5>Release Date - {movieInfo.Released}</h5>
-                <h5>Runtime - {movieInfo.Runtime}</h5>
-                <h5>Countries - {movieInfo.Country}</h5>
-                <h5>Rated - {movieInfo.Rated}</h5>
+              <div className="movie-info__stats--left">
+                <div className="movie-info__stats--ratings">
+                  {movieInfo.Ratings.length === 3 && (
+                    <>
+                      {" "}
+                      <div className="movie-info__stats--rating">
+                        <figure>
+                          <img src={imdbLogo} alt="" />
+                        </figure>
+                        <h5>{movieInfo.Ratings[0].Value}</h5>
+                      </div>
+                      <div className="movie-info__stats--rating">
+                        <figure>
+                          <img src={rottenTomatoesLogo} alt="" />
+                        </figure>
+                        <h5>{movieInfo.Ratings[1].Value}</h5>
+                      </div>
+                      <div className="movie-info__stats--rating">
+                        <figure>
+                          <img src={metacriticLogo} alt="" />
+                        </figure>
+                        <h5>{movieInfo.Ratings[2].Value}</h5>
+                      </div>
+                    </>
+                  )}
+                  <span className="year">{movieInfo.Year}</span>
+                  <span className="rated">{movieInfo.Rated}</span>
+                  <span className="runtime">{movieInfo.Runtime}</span>
+                </div>
+                <div
+                  className="movie-info__description movie-info__description--overview"
+                  id="overview"
+                >
+                  <p>{movieInfo.Plot}</p>
+                </div>
               </div>
-              <div className="movie-info__stats--ratings">
-                {movieInfo.Ratings.map((rating) => (
-                  <h5>{`${rating.Source} - ${rating.Value}`}</h5>
-                ))}
+              <div className="movie-info__stats--right">
+                <p>
+                  <span>Cast: </span> {movieInfo.Actors}
+                </p>
+                <br />
+                <p>
+                  <span>Genres: </span> {movieInfo.Genre}
+                </p>
               </div>
             </div>
-            <div className="movie-info__tabs">
+            {/* <div className="movie-info__tabs">
               <button
                 className="movie-info__tab tab-selected"
                 id="movie-info__tab--overview"
@@ -100,17 +131,8 @@ const MovieInfo = () => {
               >
                 Reviews
               </button>
-            </div>
-            <div
-              className="movie-info__description movie-info__description--overview"
-              id="overview"
-            >
-              <p>{movieInfo.Plot}</p>
-              <br />
-              <p>Featuring - {movieInfo.Actors}</p>
-              <br />
-              <p>Awards - {movieInfo.Awards} </p>
-            </div>
+            </div> */}
+
             <div
               className="movie-info__description movie-info__description--reviews"
               id="reviews"

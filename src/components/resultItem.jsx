@@ -3,14 +3,26 @@ import "./resultItem.css";
 import { useNavigate } from "react-router-dom";
 import NA from "./NA";
 
-const ResultItem = ({ Title, Poster, Year, imdbID, setPopupTrigger }) => {
+const ResultItem = ({
+  Title,
+  Poster,
+  Year,
+  imdbID,
+  setPopupTrigger,
+  setPopupImdbId,
+}) => {
   const navigate = useNavigate();
+
+  function passToPopup() {
+    setPopupImdbId(imdbID);
+    setPopupTrigger(true);
+  }
 
   return (
     <div
       className="result-item"
       // onClick={() => navigate(`/${imdbID}`)}
-      onClick={() => setPopupTrigger(true)}
+      onClick={() => passToPopup()}
     >
       <figure className="result__img--wrapper">
         <img

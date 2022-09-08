@@ -61,6 +61,7 @@ const Reviews = ({ movieTitle }) => {
 
   return (
     <div className="reviews">
+      <h2 className="reviews--heading">Reviews</h2>
       {isUserEmpty(user) ? (
         <div className="create-review__logged-out">
           <h2>

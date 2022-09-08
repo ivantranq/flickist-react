@@ -4,6 +4,7 @@ import Popup from "../components/Popup";
 
 const Results = ({ isLoading, searchResults, input }) => {
   const [popupTrigger, setPopupTrigger] = useState(false);
+  const [popupImdbId, setPopupImdbId] = useState("");
 
   useEffect(() => {
     const body = document.querySelector("body");
@@ -31,10 +32,15 @@ const Results = ({ isLoading, searchResults, input }) => {
                     Year={Year}
                     imdbID={imdbID}
                     setPopupTrigger={setPopupTrigger}
+                    setPopupImdbId={setPopupImdbId}
                   />
                 ))}
             </div>
-            <Popup trigger={popupTrigger} setTrigger={setPopupTrigger}></Popup>
+            <Popup
+              trigger={popupTrigger}
+              setTrigger={setPopupTrigger}
+              imdbId={popupImdbId}
+            ></Popup>
           </div>
         </>
       ) : (
