@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ResultItem from "./resultItem";
+import Popup from "../components/Popup";
 
 const Results = ({ isLoading, searchResults, input }) => {
+  const [popupTrigger, setPopupTrigger] = useState(false);
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    console.log(body);
+    if (popupTrigger) {
+      body.style.overflow = "hidden";
+    } else {
+      body.style.overflow = "auto";
+    }
+  }, [popupTrigger]);
+
   return (
     <>
       {!isLoading ? (
@@ -17,9 +30,11 @@ const Results = ({ isLoading, searchResults, input }) => {
                     Type={Type}
                     Year={Year}
                     imdbID={imdbID}
+                    setPopupTrigger={setPopupTrigger}
                   />
                 ))}
             </div>
+            <Popup trigger={popupTrigger} setTrigger={setPopupTrigger}></Popup>
           </div>
         </>
       ) : (

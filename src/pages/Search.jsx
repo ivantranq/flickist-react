@@ -6,12 +6,12 @@ import axios from "axios";
 import Results from "../components/Results";
 import Void from "../assets/Void.svg";
 import BackgroundImg from "./assets/home__bg-img.jpg";
-import Popup from "../components/Popup";
 
 const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchResults, setSearchResults] = useState([0]);
   const [noResults, setNoResults] = useState(false);
+
   const { input } = useParams();
   console.log("Search.jsx input -> ", input);
 
@@ -97,7 +97,6 @@ const Search = () => {
           </h1>
         </div>
       )}
-      <Popup trigger={false}></Popup>
     </div>
   );
 };

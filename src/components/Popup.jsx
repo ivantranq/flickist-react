@@ -1,12 +1,12 @@
 import React from "react";
 import "./Popup.css";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 const Popup = ({ trigger, setTrigger }) => {
   return trigger === true ? (
     <div className="popup">
       <div className="popup__container">
-        <CloseIcon></CloseIcon>
+        <CloseIcon onClick={() => setTrigger(false)}></CloseIcon>
       </div>
     </div>
   ) : (

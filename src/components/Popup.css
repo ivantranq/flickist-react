@@ -1,11 +1,12 @@
 .popup {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
   height: 100%;
   width: 100vw;
-  background-color: rgb(28, 28, 28, 0.7);
+  background-color: rgb(28, 28, 28, 0.4);
   z-index: 98;
+  bottom: 0px;
 }
 
 .popup__container {
@@ -14,7 +15,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 750px;
+  max-width: 728px;
   bottom: 0px;
   height: calc(100vh - 36px);
   border-top-right-radius: 16px;
@@ -22,4 +23,31 @@
   background-color: #1c1c1c;
   z-index: 99;
   /* overflow-y: scroll; */
+  animation: fadein 500ms ease;
+}
+
+.popup .MuiSvgIcon-root {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-start;
+  margin-left: auto;
+  cursor: pointer;
+  color: white;
+  margin-top: 16px;
+  margin-right: 16px;
+  background-color: transparent;
+  border-radius: 99px;
+}
+
+.popup .MuiSvgIcon-root:hover {
+  box-shadow:  0px 0px 20px #fff;
+}
+
+.popup .MuiSvgIcon-root:active {
+  border: 2px solid #fff;
+}
+
+@keyframes fadein {
+  0% { opacity: 0;}
+  100% { opacity: 1; }
 }
