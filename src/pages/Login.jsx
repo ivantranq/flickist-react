@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { isUserEmpty } from "./Helpers";
 import BackgroundImg from "./assets/home__bg-img.jpg";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,18 +21,32 @@ const Login = () => {
     });
   }, []);
 
-  function login(email, password) {
-    signInWithEmailAndPassword(auth, email, password)
+  async function login(email, password) {
+    await signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);
         setUser(user);
+        handleLogin("found");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
-        alert("User does not exist, please register an account.");
+        console.log("error user", user);
+        handleLogin("not found");
+        // alert("User does not exist, please register an account.");
       });
+  }
 
-    navigate("/");
+  function handleLogin(str) {
+    const errorBox = document.querySelector(".error-box");
+    console.log(errorBox);
+    if (str === "not found") {
+      errorBox.style.visibility = "visible";
+    } else if (str === "found") {
+      if (errorBox.style.visibility === "visible") {
+        errorBox.style.visibility = "hidden";
+      }
+    }
   }
 
   function handleSubmit(event) {
@@ -50,19 +65,21 @@ const Login = () => {
       </figure>
       <div className="login__container">
         <h1 className="login__heading">Sign In</h1>
+
+        <div className="error-box">
+          <p className="error-text">
+            User not found or incorrect email/password.
+          </p>
+        </div>
+
         <form className="login__form" onSubmit={handleSubmit}>
-          {/* <label htmlFor="email" className="login-input__label">
-            Email
-          </label> */}
           <input
             type="email"
             placeholder="Email"
             className="login-input"
             required
           />
-          {/* <label htmlFor="password" className="login-input__label">
-            Password
-          </label> */}
+
           <input
             type="password"
             className="login-input"
@@ -70,11 +87,14 @@ const Login = () => {
             required
           />
           <Button className="login-button" type="submit">
-            Sign In
+            <span className="login-button--text">Sign In</span>
+
+            <RefreshIcon className="login-button--loading"></RefreshIcon>
           </Button>
         </form>
         <p className="sign-up__text">
-          New to Flickist? <span onClick={() => navigate('/register')}>Sign Up Now</span>
+          New to Flickist?{" "}
+          <span onClick={() => navigate("/register")}>Sign Up Now</span>
         </p>
       </div>
     </div>

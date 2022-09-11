@@ -54,6 +54,12 @@
   margin-top: 12px;
 }
 
+.movie-info__quick-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .movie-info__stats--ratings {
   display: flex;
 }
@@ -88,6 +94,11 @@
   font-size: 14px;
 }
 
+.movie-info__year-runtime-rated {
+  display: flex;
+  align-items: center;
+}
+
 .year,
 .rated,
 .runtime {
@@ -107,6 +118,8 @@
 .movie-info__stats--right {
   width: 30%;
   margin-top: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 .movie-info__stats--right p {
@@ -118,34 +131,6 @@
 .movie-info__stats--right span {
   color: #777777;
   font-size: 14px;
-}
-
-.movie-info__tabs {
-  padding-top: 8px;
-  display: flex;
-}
-
-.movie-info__tabs button {
-  border: none;
-  font-size: 16px;
-  padding: 8px 16px;
-  margin-right: 2px;
-  cursor: pointer;
-  font-weight: 600;
-  text-align: left;
-}
-
-.movie-info__tabs button:hover {
-  filter: brightness(0.7);
-}
-
-.tab-selected {
-  color: white;
-  background-color: #576ca8;
-  border-bottom: 2px solid #1b264f !important;
-  outline: none !important;
-  cursor: default !important;
-  filter: brightness(1) !important;
 }
 
 .movie-info__description--overview {
@@ -244,9 +229,22 @@ RESPONSIVENESS
     height: auto;
   }
 
-  .movie-info__body {
-    max-width: 800px;
+  .movie-info__stats {
     flex-direction: column;
+  }
+
+  .movie-info__stats--left {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .movie-info__quick-stats {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .movie-info__year-runtime-rated {
+    margin-top: 12px;
   }
 
   .movie-info__body--skeleton {

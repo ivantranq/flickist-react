@@ -71,33 +71,37 @@ const MovieInfo = ({ id }) => {
             <h2 className="movie-info__title">{`${movieInfo.Title}`}</h2>
             <div className="movie-info__stats">
               <div className="movie-info__stats--left">
-                <div className="movie-info__stats--ratings">
-                  {movieInfo.Ratings.length === 3 && (
-                    <>
-                      {" "}
-                      <div className="movie-info__stats--rating">
-                        <figure>
-                          <img src={imdbLogo} alt="" />
-                        </figure>
-                        <h5>{movieInfo.Ratings[0].Value}</h5>
-                      </div>
-                      <div className="movie-info__stats--rating">
-                        <figure>
-                          <img src={rottenTomatoesLogo} alt="" />
-                        </figure>
-                        <h5>{movieInfo.Ratings[1].Value}</h5>
-                      </div>
-                      <div className="movie-info__stats--rating">
-                        <figure>
-                          <img src={metacriticLogo} alt="" />
-                        </figure>
-                        <h5>{movieInfo.Ratings[2].Value}</h5>
-                      </div>
-                    </>
-                  )}
-                  <span className="year">{movieInfo.Year}</span>
-                  <span className="rated">{movieInfo.Rated}</span>
-                  <span className="runtime">{movieInfo.Runtime}</span>
+                <div className="movie-info__quick-stats">
+                  <div className="movie-info__stats--ratings">
+                    {movieInfo.Ratings.length === 3 && (
+                      <>
+                        {" "}
+                        <div className="movie-info__stats--rating">
+                          <figure>
+                            <img src={imdbLogo} alt="" />
+                          </figure>
+                          <h5>{movieInfo.Ratings[0].Value}</h5>
+                        </div>
+                        <div className="movie-info__stats--rating">
+                          <figure>
+                            <img src={rottenTomatoesLogo} alt="" />
+                          </figure>
+                          <h5>{movieInfo.Ratings[1].Value}</h5>
+                        </div>
+                        <div className="movie-info__stats--rating">
+                          <figure>
+                            <img src={metacriticLogo} alt="" />
+                          </figure>
+                          <h5>{movieInfo.Ratings[2].Value}</h5>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                  <div className="movie-info__year-runtime-rated">
+                    <span className="year">{movieInfo.Year}</span>
+                    <span className="rated">{movieInfo.Rated}</span>
+                    <span className="runtime">{movieInfo.Runtime}</span>
+                  </div>
                 </div>
                 <div
                   className="movie-info__description movie-info__description--overview"

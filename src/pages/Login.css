@@ -35,8 +35,24 @@
   margin-bottom: 28px;
 }
 
-.login-input__label {
-  color: transparent;
+.error-box {
+  visibility: hidden;
+  width: 100%;
+  height: 30px;
+  background-color: #e87c03;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-bottom: 16px;
+}
+
+.error-text {
+  color: white;
+  font-size: 14px;
+  width: 60%;
+  padding: 8px;
 }
 
 .login__form {
@@ -72,18 +88,22 @@
   outline: none;
 }
 
-
-
 .login-button {
   color: white !important;
+  font-weight: 700 !important;
+  text-transform: capitalize !important;
   font-size: large !important;
   margin-top: 16px !important;
   padding-left: 16px !important;
   padding-right: 16px !important;
   background-color: red !important;
-  font-weight: 700 !important;
-  text-transform: capitalize !important;
   width: 100% !important;
+  position: relative !important;
+}
+
+.login-button--loading {
+  position: absolute;
+  visibility: hidden;
 }
 
 .sign-up__text {
@@ -125,4 +145,8 @@
     padding-left: 30px;
     padding-right: 30px;
   }
+}
+
+@keyframes spin {
+  
 }
