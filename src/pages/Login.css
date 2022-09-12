@@ -36,14 +36,11 @@
 }
 
 .error-box {
-  visibility: hidden;
+  display: none;
   width: 100%;
-  height: 30px;
   background-color: #e87c03;
   border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
   height: auto;
   margin-bottom: 16px;
 }
@@ -53,6 +50,8 @@
   font-size: 14px;
   width: 60%;
   padding: 8px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .login__form {

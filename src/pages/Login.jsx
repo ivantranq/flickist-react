@@ -28,7 +28,7 @@ const Login = () => {
     console.log(loginText);
     loginText.style.visibility = "hidden";
     spinLoading.style.visibility = "visible";
-    
+
     await signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);
@@ -51,10 +51,10 @@ const Login = () => {
     console.log(errorBox);
 
     if (str === "not found") {
-      errorBox.style.visibility = "visible";
+      errorBox.style.display = "block";
     } else if (str === "found") {
-      if (errorBox.style.visibility === "visible") {
-        errorBox.style.visibility = "hidden";
+      if (errorBox.style.display === "block") {
+        errorBox.style.display = "none";
       }
     }
   }
@@ -76,7 +76,7 @@ const Login = () => {
       <div className="login__container">
         <h1 className="login__heading">Sign In</h1>
 
-        <div className="error-box">
+        <div className="error-box showing">
           <p className="error-text">
             User not found or incorrect email/password.
           </p>

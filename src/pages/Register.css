@@ -109,10 +109,24 @@
 }
 
 .register-btn--loading {
+    visibility: hidden;
     position: absolute;
     display: flex;
     animation: spin 1s infinite;
-    visibility: hidden;
+    z-index: 99;
+}
+
+.matching {
+    border-bottom: 4px solid green;
+}
+
+.matching::after {
+    position: relative;
+    z-index: 2;
+    content: "Passwords are matching";
+    height: 10px;
+    display: inline-block;
+    color: green;
 }
 
 @media (max-width: 728px) {

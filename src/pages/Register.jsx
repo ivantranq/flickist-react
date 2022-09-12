@@ -21,19 +21,18 @@ const Register = () => {
       const name = event.target[0].value;
       const email = event.target[1].value;
       const password = event.target[2].value;
-      const spinLoading = document.body.querySelector(".register-btn--loading");
-      const registerText = document.body.querySelector(".register-btn--text");
-      console.log(spinLoading);
-      registerText.style.visibility = "hidden";
-      spinLoading.style.visbiility = "visible";
+
       await register(name, email, password);
       navigate("/");
-      spinLoading.style.visbiility = "hidden";
-      registerText.style.visibility = "visible";
     }
   }
 
   async function register(name, email, password) {
+    const spinLoading = document.body.querySelector(".register-btn--loading");
+    const registerText = document.body.querySelector(".register-btn--text");
+    console.log(spinLoading);
+    registerText.style.visibility = "hidden";
+    spinLoading.style.visibility = "visible";
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);
@@ -42,6 +41,8 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
+    spinLoading.style.visbiility = "hidden";
+    registerText.style.visibility = "visible";
   }
 
   function passwordsMatching() {
@@ -103,9 +104,7 @@ const Register = () => {
           />
           <Button type="submit" className="register-button">
             <span className="register-btn--text">Register</span>
-            <span className="register-btn--loading">
-              <RefreshIcon></RefreshIcon>
-            </span>
+            <RefreshIcon className="register-btn--loading"></RefreshIcon>
           </Button>
         </form>
         <p className="sign-in">
