@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Register.css";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -6,11 +6,12 @@ import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import BackgroundImg from "./assets/home__bg-img.jpg";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 const Register = () => {
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     console.log(event);
     for (let i = 0; i < 4; i++) {
@@ -20,13 +21,20 @@ const Register = () => {
       const name = event.target[0].value;
       const email = event.target[1].value;
       const password = event.target[2].value;
-      register(name, email, password);
+      const spinLoading = document.body.querySelector(".register-btn--loading");
+      const registerText = document.body.querySelector(".register-btn--text");
+      console.log(spinLoading);
+      registerText.style.visibility = "hidden";
+      spinLoading.style.visbiility = "visible";
+      await register(name, email, password);
       navigate("/");
+      spinLoading.style.visbiility = "hidden";
+      registerText.style.visibility = "visible";
     }
   }
 
-  function register(name, email, password) {
-    createUserWithEmailAndPassword(auth, email, password)
+  async function register(name, email, password) {
+    await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);
         user["displayName"] = name;
@@ -57,10 +65,6 @@ const Register = () => {
       </figure>
       <div className="register-page__container">
         <h2>Get Started</h2>
-        <p>
-          Once you hit Register, you will be logged in and taken to the homepage
-          straight away
-        </p>
         <form className="register__form" onSubmit={handleSubmit} noValidate>
           {/* <label htmlFor="username">Name</label> */}
           <input
@@ -98,7 +102,10 @@ const Register = () => {
             onChange={() => passwordsMatching()}
           />
           <Button type="submit" className="register-button">
-            Register
+            <span className="register-btn--text">Register</span>
+            <span className="register-btn--loading">
+              <RefreshIcon></RefreshIcon>
+            </span>
           </Button>
         </form>
         <p className="sign-in">

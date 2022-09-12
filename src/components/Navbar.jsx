@@ -62,7 +62,11 @@ const Navbar = () => {
         </div>
       ) : (
         <div className="navbar__links">
-          <Button className="navbar__link" onClick={() => logout()}>
+          <span className="welcome-text">
+            Welcome,{" "}
+            {user.displayName ? user.displayName : user.email.split("@")[0]}!
+          </span>
+          <Button className="navbar__link navbar__link--logout" onClick={() => logout()}>
             Logout
           </Button>
         </div>

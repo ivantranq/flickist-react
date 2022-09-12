@@ -45,6 +45,21 @@
 }
 
 
+
+.welcome-text {
+  color: white;
+  text-transform: capitalize;
+  
+}
+
+.navbar__link--logout {
+  background-color: red !important;
+  margin-left: 8px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+
 @media (max-width: 458px) {
 
   .navbar {

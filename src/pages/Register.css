@@ -92,6 +92,7 @@
     font-weight: 700 !important;
     text-transform: capitalize !important;
     width: 100%;
+    position: relative !important;
 }
 
 .sign-in {
@@ -105,6 +106,13 @@
 
 .sign-in a:hover {
     text-decoration: underline;
+}
+
+.register-btn--loading {
+    position: absolute;
+    display: flex;
+    animation: spin 1s infinite;
+    visibility: hidden;
 }
 
 @media (max-width: 728px) {
@@ -130,4 +138,10 @@
       padding-left: 30px;
       padding-right: 30px;
     }
+  }
+
+  @keyframes spin {
+    0% {transform: rotate(0deg);}
+  
+    100% {transform: rotate(360deg);}
   }

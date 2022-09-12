@@ -22,6 +22,13 @@ const Login = () => {
   }, []);
 
   async function login(email, password) {
+    const spinLoading = document.querySelector(".login-button--loading");
+    const loginText = document.querySelector(".login-button--text");
+    console.log(spinLoading);
+    console.log(loginText);
+    loginText.style.visibility = "hidden";
+    spinLoading.style.visibility = "visible";
+    
     await signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         console.log(user);
@@ -35,11 +42,14 @@ const Login = () => {
         handleLogin("not found");
         // alert("User does not exist, please register an account.");
       });
+    spinLoading.style.visibility = "hidden";
+    loginText.style.visibility = "visible";
   }
 
   function handleLogin(str) {
     const errorBox = document.querySelector(".error-box");
     console.log(errorBox);
+
     if (str === "not found") {
       errorBox.style.visibility = "visible";
     } else if (str === "found") {

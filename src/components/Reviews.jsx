@@ -28,12 +28,16 @@ const Reviews = ({ movieTitle }) => {
 
   async function createReview(title, description, rating, text) {
     console.log("createReview Accessed");
+    const username = user.displayName
+      ? user.displayName
+      : user.email.split("@")[0];
+    console.log(username);
     const review = {
       title: title,
       description: description,
       rating: rating,
       text: text,
-      username: user.email,
+      username: username,
     };
     await addDoc(collection(db, "reviews"), review);
   }
@@ -50,7 +54,7 @@ const Reviews = ({ movieTitle }) => {
   }
 
   async function getReviewsByMovieTitle(movieTitle) {
-    const reviewsCollectionTitleRef = await query(
+    const reviewsCollectionTitleRef = query(
       collection(db, "reviews"),
       where("title", "==", movieTitle)
     );
